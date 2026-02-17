@@ -143,7 +143,7 @@ function renderCategories(categories) {
  */
 function createProductCard(product) {
   const div = document.createElement("div");
-  // Tailwind card classes
+ 
   div.className = "card card-compact bg-base-100 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 group";
   
   const { id, title, price, image, category, rating } = product;
