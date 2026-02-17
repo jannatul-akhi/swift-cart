@@ -97,13 +97,11 @@ function renderProducts(products) {
   });
 }
 
-/**
- * Render top 3 trending products (based on rating rate)
- */
-function renderTrending(products) {
-  if (!trendingGrid) return; // Guard clause
 
-  // Sort by rating.rate descending and take top 3
+function renderTrending(products) {
+  if (!trendingGrid) return;
+
+
   const sorted = [...products].sort((a, b) => b.rating.rate - a.rating.rate);
   const trending = sorted.slice(0, 3);
 
@@ -114,13 +112,11 @@ function renderTrending(products) {
   });
 }
 
-/**
- * Loop through and create category buttons
- */
-function renderCategories(categories) {
-  if (!categoryContainer) return; // Guard clause
 
-  // Existing "All" button is hardcoded in HTML, append others
+function renderCategories(categories) {
+  if (!categoryContainer) return; 
+
+
   categories.forEach((cat) => {
     const btn = document.createElement("button");
     btn.className = "btn btn-outline rounded-full px-6 capitalize filter-btn hover:btn-primary";
@@ -131,7 +127,7 @@ function renderCategories(categories) {
     categoryContainer.appendChild(btn);
   });
 
-  // Add event listener to the "All" button
+  
   const allBtn = document.querySelector('[data-category="all"]');
   if (allBtn) {
       allBtn.addEventListener("click", () => handleCategoryClick("all", allBtn));
