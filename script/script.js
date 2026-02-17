@@ -184,7 +184,6 @@ function createProductCard(product) {
   return div;
 }
 
-// --- Interaction Handlers ---
 
 /**
  * Handle category filter click
