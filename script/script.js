@@ -139,7 +139,7 @@ function renderCategories(categories) {
 }
 
 /**
- * Create HTML for a single product card
+ * Creating HTML for a single product card
  */
 function createProductCard(product) {
   const div = document.createElement("div");
@@ -190,7 +190,7 @@ function createProductCard(product) {
  * Handle category filter click
  */
 function handleCategoryClick(category, btnElement) {
-  // Update UI active state
+  
   const buttons = document.querySelectorAll(".filter-btn");
   buttons.forEach((btn) => {
       btn.classList.remove("btn-primary", "text-white");
@@ -205,27 +205,26 @@ function handleCategoryClick(category, btnElement) {
   if (category === "all") {
     renderProducts(allProducts);
   } else {
-    // Filter from local products
     const filtered = allProducts.filter((p) => p.category === category);
     renderProducts(filtered);
   }
 }
 
 /**
- * Handle Details Button Click - Open Modal
+ * Handling Details Button Click - Open Modal
  */
 async function handleDetailsClick(id) {
-  // Try to find in local state first
+
   let product = allProducts.find(p => p.id === id);
   
-  // If not found (e.g., maybe on trending only and allProducts logic weird?), fetch it
+ 
   if (!product) {
       product = await fetchProductDetails(id);
   }
   
   if (!product) return;
 
-  // Populate Modal
+  // Modal
   if (modalImage) modalImage.src = product.image;
   if (modalTitle) modalTitle.innerText = product.title;
   if (modalCategory) modalCategory.innerText = product.category;
@@ -234,7 +233,7 @@ async function handleDetailsClick(id) {
   if (modalRatingCount) modalRatingCount.innerText = `(${product.rating.count} reviews)`;
   if (modalDescription) modalDescription.innerText = product.description;
   
-  // Bind Add to Cart button in modal
+  // Add to Cart button in modal
   if (modalAddToCartBtn) {
       modalAddToCartBtn.onclick = () => {
           addToCart(product);
@@ -249,12 +248,12 @@ async function handleDetailsClick(id) {
  * Intermediate helper for the HTML onclick
  */
 function addToCartEvent(id) {
-    // Try local array first
+ 
     let product = allProducts.find(p => p.id === id);
     if(product) { 
         addToCart(product); 
     } else {
-        // Fallback fetch if somehow needed (unlikely)
+        
         fetchProductDetails(id).then(p => { 
             if(p) addToCart(p); 
         });
