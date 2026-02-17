@@ -155,25 +155,27 @@ function createProductCard(product) {
         alt="${title}"
         class="h-full w-full object-contain group-hover:scale-110 transition-transform duration-300"
       />
-      <div class="absolute top-3 right-3 badge badge-secondary badge-outline text-xs capitalize">${category}</div>
     </figure>
     <div class="card-body">
-      <h2 class="card-title text-base line-clamp-2 min-h-[3rem]" title="${title}">
+      <div class="flex items-center justify-between mb-1">
+         <div class="badge bg-indigo-100 text-indigo-800 border-none rounded-full px-3 py-3 text-xs capitalize font-medium">${category}</div>
+         <div class="flex items-center gap-1">
+             <span class="text-yellow-400 text-xs"><i class="fa-solid fa-star"></i></span>
+             <span class="text-sm font-medium text-gray-600">${rating.rate}</span>
+             <span class="text-xs text-gray-400">(${rating.count})</span>
+         </div>
+      </div>
+      <h2 class="card-title text-base font-bold text-gray-800 line-clamp-2 min-h-[3rem]" title="${title}">
         ${title}
       </h2>
-      <div class="flex items-center gap-2 mt-1">
-         <span class="text-yellow-400 text-sm"><i class="fa-solid fa-star"></i></span>
-         <span class="text-sm font-medium text-gray-600">${rating.rate}</span>
-         <span class="text-xs text-gray-400">(${rating.count})</span>
-      </div>
-      <div class="flex items-center justify-between mt-3">
-        <span class="text-xl font-bold text-primary">$${price.toFixed(2)}</span>
+      <div class="flex items-center justify-between mt-1">
+        <span class="text-xl font-bold text-gray-900">$${price.toFixed(2)}</span>
       </div>
       <div class="card-actions justify-end mt-3 grid grid-cols-2 gap-2">
-        <button class="btn btn-sm btn-outline btn-primary" onclick="handleDetailsClick(${id})">
+        <button class="btn btn-sm btn-outline btn-primary hover:text-white" onclick="handleDetailsClick(${id})">
            <i class="fa-regular fa-eye"></i> Details
         </button>
-        <button class="btn btn-sm btn-primary" onclick="addToCartEvent(${id})">
+        <button class="btn btn-sm btn-primary text-white" onclick="addToCartEvent(${id})">
            <i class="fa-solid fa-cart-shopping"></i> Add
         </button>
       </div>
